@@ -4,3 +4,9 @@ node_modules/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Build output
+dist/
+
+# TypeScript specific
+*.tsbuildinfo
