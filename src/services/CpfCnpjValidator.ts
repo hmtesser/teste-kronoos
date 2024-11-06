@@ -28,7 +28,7 @@ export function validate(value:string){
             const CNPJTwelveDigits = formattedValue.slice(0, 12).split("").map(Number);
             const firstDigit = verifyCpfDigit(CNPJTwelveDigits.reduce((sum, digit, index) => sum + digit * [5,4,3,2,9,8,7,6,5,4,3,2][index], 0));
         
-            // Calcula o segundo dígito verificador
+        
             const CPNJThirteenDigits = [...CNPJTwelveDigits, firstDigit];
             const secondDigit = verifyCpfDigit(CPNJThirteenDigits.reduce((sum, digit, index) => sum + digit * [6,5,4,3,2,9,8,7,6,5,4,3,2][index], 0));
         

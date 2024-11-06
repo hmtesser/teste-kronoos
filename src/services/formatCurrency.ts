@@ -1,4 +1,4 @@
-export function formatCurrency(val:number): string {
+export function formatCurrency(val:string): string {
     const bRL = new Intl.NumberFormat('pt-BR', {
         style:"currency",
         currency:'BRL',
@@ -6,7 +6,5 @@ export function formatCurrency(val:number): string {
         maximumFractionDigits:2,
     })
 
-    return bRL.format((val));
+    return bRL.format((parseFloat(val)));
 }
-
-console.log(formatCurrency(parseFloat('146296.67')))
