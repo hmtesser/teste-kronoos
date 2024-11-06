@@ -13,8 +13,3 @@ export interface DataValidate {
 }
 
 export type CpfCnpjValidationResult = 'Válido' | 'Inválido';
-
-export interface FormattedValue {
-    original: number;
-    formatted: string;
-}
