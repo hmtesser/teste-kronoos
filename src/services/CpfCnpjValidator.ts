@@ -50,5 +50,4 @@ function verifyCpfDigit(val:number): number {
 }
 
 
-console.log(validate('33.041.260/1443-28'));
 
