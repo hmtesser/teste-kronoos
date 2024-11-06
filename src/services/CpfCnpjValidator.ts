@@ -1,0 +1,42 @@
+export function validate(value:string){
+    const formattedValue = value.replace(/[^a-zA-Z0-9]/g,"");
+    if(formattedValue.length  == 11){
+        const checkEqualCpf:any = formattedValue.split('').every((char) => char == formattedValue[0])
+        if (checkEqualCpf) {
+            return 'CPF inválido: números repetidos';
+        } else {
+            // verificação do CPF
+            const cpfNineDigits = formattedValue.slice(0,9).split("").map(Number)
+            const firstDigit = verifyDigit(cpfNineDigits.reduce((sum, digit, index) => sum + digit * (10- index), 0));
+            const cpfTenDigits = [...cpfNineDigits, firstDigit];
+            const secondDigit = verifyDigit(cpfTenDigits.reduce((sum, digit, index) => sum + digit * (11 -index),0));
+
+            if(formattedValue[9] === firstDigit.toString() && formattedValue[10] === secondDigit.toString()){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+    }else if(formattedValue.length == 14){
+        const checkEqualCNPJ = formattedValue.split('').every((char) => char == formattedValue[0])
+        if(checkEqualCNPJ){
+            return 'CNPJ inválido'
+        }else{
+            // verificação do CNPJ
+            const CNPJTwelveDigits = formattedValue.slice(0,12).split("").map(Number)
+            
+        }
+    }else{
+        return 'CPF ou CNPJ inválido';
+    }
+}
+
+
+function verifyDigit(val:number): number {
+    const rest = val % 11;
+    return rest <2 ? 0 : 11 - rest;
+}
+
+console.log(validate('11.111.111/1111-11'));
+
