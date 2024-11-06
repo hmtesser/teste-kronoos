@@ -7,7 +7,7 @@ export const readCSV = (fileName:string): Promise<any[]> => {
         const results:any[] = [];
         fs.createReadStream(fileName).pipe(csv()).on('data', data => {
             results.push(data);
-        })
+        }) 
         .on('end', () => {
             resolve(results);
         })
